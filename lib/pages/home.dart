@@ -3,6 +3,8 @@
 //  Copyright © 2021 Abhi Jadhav, Nathan Parikh, Aayush Goradia. All rights reserved.
 //  Company Domain: abhijadhav.me
 import 'package:flutter/material.dart';
+import 'package:auditory_testing/pages/therapy.dart';
+import 'package:flutter/cupertino.dart';
 
 // Colors
 Color accentColor = HexColor("#FF3988FE");
@@ -69,7 +71,9 @@ class _HomeState extends State<Home> {
                                     side: BorderSide(color: accentColor))),
                             backgroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white)),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, '/therapy');
+                        },
                         child: Column(
                           children: <Widget>[
                             Text('🔹', style: TextStyle(fontSize: 80)),
@@ -186,7 +190,7 @@ class _HomeState extends State<Home> {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushReplacementNamed(context, '/therapy');
               },
             ),
             ListTile(

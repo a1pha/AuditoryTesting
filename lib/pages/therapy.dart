@@ -4,6 +4,7 @@
 //  Company Domain: abhijadhav.me
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:auditory_testing/pages/home.dart';
 
 // Colors
 Color accentColor = HexColor("#FF3988FE");
@@ -167,7 +168,7 @@ class _TherapyState extends State<Therapy> {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushReplacementNamed(context, '/home');
               },
             ),
             ListTile(
