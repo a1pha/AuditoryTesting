@@ -1,6 +1,6 @@
-# auditory_testing
+# Auditory Testing System for Minimally Conscious Patients (BME 460L) 
 
-## Created by Abhi Jadhav on 3/21/2021.
-## Copyright © 2021 Abhi Jadhav, Nathan Parikh, Aayush Goradia. All rights reserved.
-## Company Domain: abhijadhav.me
+### Created by Abhi Jadhav on 3/21/2021.
+### Copyright © 2021 Abhi Jadhav, Nathan Parikh, Aayush Goradia. All rights reserved.
+### Company Domain: abhijadhav.me
 
