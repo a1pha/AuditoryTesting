@@ -145,10 +145,11 @@ class _TherapyState extends State<Therapy> {
                             })),
                     Padding(
                         padding: const EdgeInsets.only(top: 50),
-                        child: CupertinoSlider(
+                        child: Slider(
+                            // Change slider to CupertinoSlider
                             value: _volume,
                             divisions: 20,
-                            //label: "$_volume",
+                            label: "$_volume", // Coment this line out
                             min: 0.0,
                             max: 100.0,
                             onChanged: (double value) {
