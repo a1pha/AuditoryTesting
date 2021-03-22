@@ -16,15 +16,23 @@ Color primaryColor = HexColor("#FFC4C4C4");
 double _volume = 50.0;
 int _direction = 1;
 List<String> _locations = [
+  'Bark',
+  'Bell',
   'Bird Chirping',
+  'Clap',
   'Gong',
   'Ocean',
+  'Song',
   'Whistle'
 ]; // Option 2
 Map<String, String> filenames = {
+  'Bark': 'bark',
+  'Bell': 'bell',
   'Bird Chirping': 'bird_chirping',
+  'Clap': 'clap',
   'Gong': 'gong',
   'Ocean': 'ocean',
+  'Song': 'song',
   'Whistle': 'whistle'
 };
 String _selectedLocation; // Option 2
@@ -145,11 +153,11 @@ class _TherapyState extends State<Therapy> {
                             })),
                     Padding(
                         padding: const EdgeInsets.only(top: 50),
-                        child: Slider(
+                        child: CupertinoSlider(
                             // Change slider to CupertinoSlider
                             value: _volume,
                             divisions: 20,
-                            label: "$_volume", // Coment this line out
+                            //label: "$_volume", // Coment this line out
                             min: 0.0,
                             max: 100.0,
                             onChanged: (double value) {
