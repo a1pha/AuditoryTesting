@@ -2,16 +2,31 @@
 //  Created by Abhi Jadhav on 2/19/2021.
 //  Copyright © 2021 Abhi Jadhav, Nathan Parikh, Aayush Goradia. All rights reserved.
 //  Company Domain: abhijadhav.me
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auditory_testing/pages/home.dart';
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'dart:math';
 
 // Colors
 Color accentColor = HexColor("#FF3988FE");
 Color primaryColor = HexColor("#FFC4C4C4");
 double _volume = 50.0;
 int _direction = 1;
-List<String> _locations = ['Clap', 'Song', 'Bark', 'Bell']; // Option 2
+List<String> _locations = [
+  'Bird Chirping',
+  'Gong',
+  'Ocean',
+  'Whistle'
+]; // Option 2
+Map<String, String> filenames = {
+  'Bird Chirping': 'bird_chirping',
+  'Gong': 'gong',
+  'Ocean': 'ocean',
+  'Whistle': 'whistle'
+};
 String _selectedLocation; // Option 2
 
 class Therapy extends StatefulWidget {
@@ -132,6 +147,8 @@ class _TherapyState extends State<Therapy> {
                         padding: const EdgeInsets.only(top: 50),
                         child: CupertinoSlider(
                             value: _volume,
+                            divisions: 20,
+                            //label: "$_volume",
                             min: 0.0,
                             max: 100.0,
                             onChanged: (double value) {
@@ -145,7 +162,30 @@ class _TherapyState extends State<Therapy> {
                 icon: Icon(Icons.play_arrow),
                 iconSize: 125,
                 color: HexColor("#FF26710B"),
-                onPressed: () {})
+                onPressed: () {
+                  String fn;
+                  AudioPlayer advancedPlayer = AudioPlayer();
+                  AudioCache player = AudioCache(fixedPlayer: advancedPlayer);
+                  advancedPlayer.setVolume(0);
+                  if (_selectedLocation == null) {
+                    return;
+                  }
+                  // Left
+                  else if (_direction == 0) {
+                    fn = filenames[_selectedLocation] + 'l.mp3';
+                    player.play(fn, volume: _volume / 100);
+                  }
+                  // Both
+                  else if (_direction == 1) {
+                    fn = filenames[_selectedLocation] + '.mp3';
+                    player.play(fn, volume: _volume / 100);
+                  }
+                  // Right
+                  else {
+                    fn = filenames[_selectedLocation] + 'r.mp3';
+                    player.play(fn, volume: _volume / 100);
+                  }
+                })
           ]),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
