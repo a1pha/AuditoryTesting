@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   audioplayers: ^0.18.0 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -47,32 +48,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/bark.mp3
-    - assets/barkl.mp3
-    - assets/barkr.mp3
-    - assets/bell.mp3
-    - assets/belll.mp3
-    - assets/bellr.mp3
-    - assets/bird_chirping.mp3
-    - assets/bird_chirpingl.mp3
-    - assets/bird_chirpingr.mp3
-    - assets/clap.mp3
-    - assets/clapl.mp3
-    - assets/clapr.mp3
-    - assets/gong.mp3
-    - assets/gongl.mp3
-    - assets/gongr.mp3
-    - assets/ocean.mp3
-    - assets/ocean.mp3
-    - assets/oceanl.mp3
-    - assets/oceanr.mp3
-    - assets/song.mp3
-    - assets/songl.mp3
-    - assets/songr.mp3
-    - assets/whistle.mp3
-    - assets/whistlel.mp3
-    - assets/whistler.mp3
-
+    - assets/sounds/
+    - assets/app_icon/applogo.png
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -5,10 +5,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:auditory_testing/pages/home.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'dart:math';
 
 // Colors
 Color accentColor = HexColor("#FF3988FE");
@@ -26,14 +24,14 @@ List<String> _locations = [
   'Whistle'
 ]; // Option 2
 Map<String, String> filenames = {
-  'Bark': 'bark',
-  'Bell': 'bell',
-  'Bird Chirping': 'bird_chirping',
-  'Clap': 'clap',
-  'Gong': 'gong',
-  'Ocean': 'ocean',
-  'Song': 'song',
-  'Whistle': 'whistle'
+  'Bark': 'sounds/bark',
+  'Bell': 'sounds/bell',
+  'Bird Chirping': 'sounds/bird_chirping',
+  'Clap': 'sounds/clap',
+  'Gong': 'sounds/gong',
+  'Ocean': 'sounds/ocean',
+  'Song': 'sounds/song',
+  'Whistle': 'sounds/whistle'
 };
 String _selectedLocation; // Option 2
 
@@ -75,13 +73,29 @@ class _TherapyState extends State<Therapy> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Row(
+              children: <Widget>[
+                Padding(
+                    padding: const EdgeInsets.only(left: 50),
+                    child: ElevatedButton(
+                      child: Text('Back'),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(accentColor)),
+                    )),
+                Spacer()
+              ],
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Padding(
-                        padding: const EdgeInsets.only(top: 50),
+                        padding: const EdgeInsets.only(top: 0),
                         child: Text('(1)',
                             style:
                                 TextStyle(fontSize: 40, color: accentColor))),
@@ -100,7 +114,7 @@ class _TherapyState extends State<Therapy> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Padding(
-                        padding: const EdgeInsets.only(top: 50),
+                        padding: const EdgeInsets.only(top: 0),
                         child: Text('Sound:',
                             style:
                                 TextStyle(fontSize: 40, color: accentColor))),
@@ -119,7 +133,7 @@ class _TherapyState extends State<Therapy> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(top: 50),
+                      padding: const EdgeInsets.only(top: 0),
                       child: DropdownButton(
                         hint: Text(
                             'Please choose a sound'), // Not necessary for Option 1
@@ -217,7 +231,8 @@ class _TherapyState extends State<Therapy> {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pushReplacementNamed(context, '/home');
+                Navigator.pop(context);
+                Navigator.pop(context);
               },
             ),
             ListTile(
@@ -241,7 +256,7 @@ class _TherapyState extends State<Therapy> {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushReplacementNamed(context, '/assessment');
               },
             ),
             ListTile(

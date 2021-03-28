@@ -3,7 +3,6 @@
 //  Copyright © 2021 Abhi Jadhav, Nathan Parikh, Aayush Goradia. All rights reserved.
 //  Company Domain: abhijadhav.me
 import 'package:flutter/material.dart';
-import 'package:auditory_testing/pages/therapy.dart';
 import 'package:flutter/cupertino.dart';
 
 // Colors
@@ -72,7 +71,7 @@ class _HomeState extends State<Home> {
                             backgroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white)),
                         onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/therapy');
+                          Navigator.pushNamed(context, '/therapy');
                         },
                         child: Column(
                           children: <Widget>[
@@ -104,7 +103,9 @@ class _HomeState extends State<Home> {
                                     side: BorderSide(color: accentColor))),
                             backgroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white)),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/assessment');
+                        },
                         child: Column(
                           children: <Widget>[
                             Text('📝', style: TextStyle(fontSize: 80)),
@@ -166,7 +167,7 @@ class _HomeState extends State<Home> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('App Logo Here'),
+              child: Image(image: AssetImage('assets/app_icon/applogo.png')),
               decoration: BoxDecoration(color: primaryColor),
             ),
             ListTile(
@@ -190,7 +191,7 @@ class _HomeState extends State<Home> {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pushReplacementNamed(context, '/therapy');
+                Navigator.pushNamed(context, '/therapy');
               },
             ),
             ListTile(
@@ -202,7 +203,7 @@ class _HomeState extends State<Home> {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushNamed(context, '/assessment');
               },
             ),
             ListTile(
