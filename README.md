@@ -4,3 +4,5 @@
 ### Copyright © 2021 Abhi Jadhav, Nathan Parikh, Aayush Goradia. All rights reserved.
 ### Company Domain: abhijadhav.me
 
+### Install Instructions: 
+https://flutter.dev/docs/get-started/install
