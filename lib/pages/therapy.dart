@@ -33,6 +33,18 @@ Map<String, String> filenames = {
   'Song': 'sounds/song',
   'Whistle': 'sounds/whistle'
 };
+
+Map<String, String> emojis = {
+  'Bark': '🐕',
+  'Bell': '🔔',
+  'Bird Chirping': '🐦',
+  'Clap': '👏',
+  'Gong': '🥁',
+  'Ocean': '🌊',
+  'Song': '🎶',
+  'Whistle': '🌬️'
+};
+
 String _selectedLocation; // Option 2
 
 class Therapy extends StatefulWidget {
