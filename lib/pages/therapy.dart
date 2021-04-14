@@ -280,7 +280,7 @@ class _TherapyState extends State<Therapy> {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushReplacementNamed(context, '/mysounds');
               },
             ),
           ],

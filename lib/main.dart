@@ -2,6 +2,7 @@
 //  Created by Abhi Jadhav on 2/19/2021.
 //  Copyright © 2021 Abhi Jadhav, Nathan Parikh, Aayush Goradia. All rights reserved.
 //  Company Domain: abhijadhav.me
+import 'package:auditory_testing/pages/mysounds.dart';
 import 'package:flutter/material.dart';
 import 'package:auditory_testing/pages/home.dart';
 import 'package:auditory_testing/pages/therapy.dart';
@@ -29,7 +30,8 @@ class _MyApp extends State<MyApp> {
       routes: {
         '/home': (context) => Home(),
         '/therapy': (context) => Therapy(),
-        '/assessment': (context) => Assessment()
+        '/assessment': (context) => Assessment(),
+        '/mysounds': (context) => MySounds()
       },
     );
   }

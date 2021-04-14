@@ -136,7 +136,9 @@ class _HomeState extends State<Home> {
                                     side: BorderSide(color: accentColor))),
                             backgroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white)),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/mysounds');
+                        },
                         child: Column(
                           children: <Widget>[
                             Text('🎙', style: TextStyle(fontSize: 80)),
@@ -215,7 +217,7 @@ class _HomeState extends State<Home> {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushNamed(context, '/mysounds');
               },
             ),
           ],

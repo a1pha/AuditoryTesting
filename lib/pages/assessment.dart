@@ -63,6 +63,20 @@ Map<String, List<String>> _routineinfo = {
     'R',
     '3'
   ],
+  'Routine 3': [
+    'Clap',
+    'L',
+    '10',
+    'Clap',
+    'R',
+    '10',
+    'Clap',
+    'B',
+    '10',
+    'Clap',
+    'L',
+    '10'
+  ],
   'Create New': [
     'Clap',
     'L',
@@ -315,7 +329,7 @@ class _AssessmentState extends State<Assessment> {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushReplacementNamed(context, '/mysounds');
               },
             ),
           ],
