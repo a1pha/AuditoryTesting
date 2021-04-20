@@ -8,3 +8,8 @@ Domain: abhijadhav.me
 
 ### Install Instructions: 
 https://flutter.dev/docs/get-started/install
+
+### Screenshots 
+Home Screen
+
+![plot](./screenshots/homescreen.PNG)
