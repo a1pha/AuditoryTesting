@@ -8,6 +8,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 
+AudioPlayer player = AudioPlayer();
+AudioCache cache = AudioCache(fixedPlayer: player);
+int StopPressed = 0;
+
 // Colors
 Color accentColor = HexColor("#FF3988FE");
 Color primaryColor = HexColor("#FFC4C4C4");
