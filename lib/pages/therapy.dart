@@ -120,10 +120,11 @@ class _TherapyState extends State<Therapy> {
                         child: Text('(2)',
                             style:
                                 TextStyle(fontSize: 40, color: accentColor))),
-                    Padding(
+/*                     Padding(
                         padding: const EdgeInsets.only(top: 50),
                         child: Text('(3)',
                             style: TextStyle(fontSize: 40, color: accentColor)))
+                   */
                   ],
                 ),
                 Column(
@@ -139,10 +140,10 @@ class _TherapyState extends State<Therapy> {
                         child: Text('Side:',
                             style:
                                 TextStyle(fontSize: 40, color: accentColor))),
-                    Padding(
+/*                     Padding(
                         padding: const EdgeInsets.only(top: 50),
                         child: Text('Volume:',
-                            style: TextStyle(fontSize: 40, color: accentColor)))
+                            style: TextStyle(fontSize: 40, color: accentColor))) */
                   ],
                 ),
                 Column(
@@ -181,7 +182,7 @@ class _TherapyState extends State<Therapy> {
                                 _direction = newValue;
                               });
                             })),
-                    Padding(
+/*                     Padding(
                         padding: const EdgeInsets.only(top: 50),
                         child: CupertinoSlider(
                             // Change slider to CupertinoSlider
@@ -192,7 +193,7 @@ class _TherapyState extends State<Therapy> {
                             max: 100.0,
                             onChanged: (double value) {
                               setState(() => _volume = value);
-                            }))
+                            })) */
                   ],
                 )
               ],
