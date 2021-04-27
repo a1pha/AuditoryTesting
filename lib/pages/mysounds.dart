@@ -22,6 +22,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+Color accentColor = HexColor("#FF3988FE");
+Color primaryColor = HexColor("#FFC4C4C4");
+
 /*
  * This is an example showing how to record to a Dart Stream.
  * It writes all the recorded data from a Stream to a File, which is completely stupid:
@@ -42,6 +45,7 @@ class MySounds extends StatefulWidget {
 }
 
 class _MySoundsState extends State<MySounds> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   // FlutterSoundPlayer? _mPlayer = FlutterSoundPlayer();
   // FlutterSoundRecorder? _mRecorder = FlutterSoundRecorder();
   FlutterSoundPlayer _mPlayer = FlutterSoundPlayer();
@@ -49,7 +53,8 @@ class _MySoundsState extends State<MySounds> {
   bool _mPlayerIsInited = false;
   bool _mRecorderIsInited = false;
   bool _mplaybackReady = false;
-  final String _mPath = 'flutter_sound_example_1.aac';
+  final myController = TextEditingController();
+  String _mPath = '.aac';
 
   @override
   void initState() {
@@ -77,6 +82,9 @@ class _MySoundsState extends State<MySounds> {
     // _mRecorder!.closeAudioSession();
     _mRecorder.closeAudioSession();
     _mRecorder = null;
+
+    myController.dispose();
+
     super.dispose();
   }
 
@@ -162,73 +170,174 @@ class _MySoundsState extends State<MySounds> {
   Widget build(BuildContext context) {
     Widget makeBody() {
       return Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.all(3),
-            padding: const EdgeInsets.all(3),
-            height: 80,
-            width: double.infinity,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Color(0xFFFAF0E6),
-              border: Border.all(
-                color: Colors.indigo,
-                width: 3,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 100, vertical: 16),
+              child: TextField(
+                controller: myController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Name new sound',
+                ),
               ),
             ),
-            child: Row(children: [
-              ElevatedButton(
-                onPressed: getRecorderFn(),
-                //color: Colors.white,
-                //disabledColor: Colors.grey,
-                child: Text(_mRecorder.isRecording ? 'Stop' : 'Record'),
+            Container(
+              margin: const EdgeInsets.all(3),
+              padding: const EdgeInsets.all(3),
+              height: 80,
+              width: double.infinity,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Color(0xFFFAF0E6),
+                border: Border.all(
+                  color: Colors.indigo,
+                  width: 3,
+                ),
               ),
-              SizedBox(
-                width: 20,
-              ),
-              Text(_mRecorder.isRecording
-                  ? 'Recording in progress'
-                  : 'Recorder is stopped'),
-            ]),
-          ),
-          Container(
-            margin: const EdgeInsets.all(3),
-            padding: const EdgeInsets.all(3),
-            height: 80,
-            width: double.infinity,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Color(0xFFFAF0E6),
-              border: Border.all(
-                color: Colors.indigo,
-                width: 3,
-              ),
+              child: Row(children: [
+                ElevatedButton(
+                  onPressed: getRecorderFn(),
+                  //color: Colors.white,
+                  //disabledColor: Colors.grey,
+                  child: Text(_mRecorder.isRecording ? 'Stop' : 'Record'),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text(_mRecorder.isRecording
+                    ? 'Recording in progress'
+                    : 'Recorder is stopped'),
+              ]),
             ),
-            child: Row(children: [
-              ElevatedButton(
-                onPressed: getPlaybackFn(),
-                //color: Colors.white,
-                //disabledColor: Colors.grey,
-                child: Text(_mPlayer.isPlaying ? 'Stop' : 'Play'),
+            Container(
+              margin: const EdgeInsets.all(3),
+              padding: const EdgeInsets.all(3),
+              height: 80,
+              width: double.infinity,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Color(0xFFFAF0E6),
+                border: Border.all(
+                  color: Colors.indigo,
+                  width: 3,
+                ),
               ),
-              SizedBox(
-                width: 20,
-              ),
-              Text(_mPlayer.isPlaying
-                  ? 'Playback in progress'
-                  : 'Player is stopped'),
-            ]),
-          ),
-        ],
-      );
+              child: Row(children: [
+                ElevatedButton(
+                  onPressed: getPlaybackFn(),
+                  //color: Colors.white,
+                  //disabledColor: Colors.grey,
+                  child: Text(_mPlayer.isPlaying ? 'Stop' : 'Play'),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text(_mPlayer.isPlaying
+                    ? 'Playback in progress'
+                    : 'Player is stopped'),
+              ]),
+            ),
+          ]);
     }
 
     return Scaffold(
-      backgroundColor: Colors.blue,
-      appBar: AppBar(
-        title: const Text('Simple Recorder'),
-      ),
-      body: makeBody(),
-    );
+        key: _scaffoldKey,
+        appBar: AppBar(
+          title: Text(
+            'My Sounds',
+            style: TextStyle(color: accentColor, fontSize: 70),
+          ),
+          leading: IconButton(
+            icon: Icon(
+              Icons.menu,
+              color: accentColor,
+              size: 70,
+            ),
+            onPressed: () => _scaffoldKey.currentState.openDrawer(),
+          ),
+          actions: [
+            Icon(Icons.battery_charging_full_rounded,
+                color: Colors.green, size: 70)
+          ],
+          toolbarHeight: 120,
+          backgroundColor: primaryColor,
+        ),
+        body: makeBody(),
+        drawer: Drawer(
+          // Add a ListView to the drawer. This ensures the user can scroll
+          // through the options in the drawer if there isn't enough vertical
+          // space to fit everything.
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Image(image: AssetImage('assets/app_icon/applogo.png')),
+                decoration: BoxDecoration(color: primaryColor),
+              ),
+              ListTile(
+                title: Text(
+                  'Home',
+                  style: TextStyle(color: accentColor, fontSize: 40),
+                ),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pushReplacementNamed(context, '/home');
+                },
+              ),
+              ListTile(
+                title: Text(
+                  'Therapy',
+                  style: TextStyle(color: accentColor, fontSize: 40),
+                ),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pushReplacementNamed(context, '/therapy');
+                },
+              ),
+              ListTile(
+                title: Text(
+                  'Assessment',
+                  style: TextStyle(color: accentColor, fontSize: 40),
+                ),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pushReplacementNamed(context, '/assessment');
+                },
+              ),
+              ListTile(
+                title: Text(
+                  'My Sounds',
+                  style: TextStyle(color: accentColor, fontSize: 40),
+                ),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ));
   }
+}
+
+class HexColor extends Color {
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll("#", "");
+    if (hexColor.length == 6) {
+      hexColor = "FF" + hexColor;
+    }
+    return int.parse(hexColor, radix: 16);
+  }
+
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
