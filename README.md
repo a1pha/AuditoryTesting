@@ -4,7 +4,7 @@ Created by Abhi Jadhav on 3/21/2021.
 
 Copyright © 2021 Abhi Jadhav, Nathan Parikh, Aayush Goradia. All rights reserved.
 
-Domain: abhijadhav.me
+Contact: abhijadhav.me
 
 ### Install Instructions: 
 https://flutter.dev/docs/get-started/install
@@ -13,3 +13,6 @@ https://flutter.dev/docs/get-started/install
 Home Screen
 
 ![plot](./screenshots/homescreen.PNG)
+
+### Documentation 
+See docs/
